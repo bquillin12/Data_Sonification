@@ -1,0 +1,39 @@
+#################################################################
+### Sonify Package ###
+### https://cran.r-project.org/web/packages/sonify/sonify.pdf ###
+#################################################################
+
+# install necessary packages
+install.packages(c("sonify", "quantmod"))
+library(sonify)
+library(quantmod)
+
+# download U.S. 10-year Treasury yields
+getSymbols('DGS10', src = "FRED")
+
+# plot yiels so that you can follow the sound along with the data
+plot(DGS10)
+
+# implement sonify with yields data
+
+sonify(
+  x = NULL,
+  y = DGS10,
+  waveform = "sine",
+  interpolation = "spline",
+  duration = 10,
+  #flim = 440,
+  ticks = NULL,
+  tick_len = 0.05,
+  pulse_len = 0,
+  pulse_amp = 0.2,
+  noise_interval = 0,
+  noise_amp = 0.5,
+  amp_level = 1,
+  na_freq = 300,
+  stereo = TRUE,
+  smp_rate = 44100,
+  play = TRUE,
+  player = "afplay",
+  player_args = 
+)
